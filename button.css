@@ -1,9 +1,9 @@
 .centerthis {
-        height: 100%;
-        display: flex;
-        justify-content: center; /* horizontal center */
-        align-items: center;     /* vertical center */
-      }
+  height: 100%;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+}
 
 button {
   color: red;
