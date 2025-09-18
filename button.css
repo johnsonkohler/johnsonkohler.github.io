@@ -4,6 +4,7 @@
   --bigtextsize: 3 em;
   --smalltextsize: 1 em;
   --buttoncolor: #000000;
+  --buttontextcolor: #ffffff;
 }
 
 div {
@@ -22,6 +23,6 @@ button {
   width: 100%;
   height: 50px;
   background-color: var(--buttoncolor);
-  color: var(--textcolor);
+  color: var(--buttontextcolor);
   font-size: var(--smalltextsize);
 }
