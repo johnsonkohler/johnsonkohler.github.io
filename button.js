@@ -28,6 +28,13 @@ var r = document.querySelector(':root');
 //call said function here
 
 
+//options for accessible colors:
+// orange #daa337
+// yellow #eee462
+// grey #505050
+// purple #c329df
+// white #ffffff
+// black #000000
 
 
 
