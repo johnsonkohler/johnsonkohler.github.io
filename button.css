@@ -3,6 +3,10 @@
   --white: #ffffff;
 }
 
+div {
+  width: 100%;
+}
+
 .centerthis {
   height: 100%;
   display: flex;
