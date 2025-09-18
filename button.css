@@ -1,6 +1,8 @@
 :root {
-  --blue: #1e90ff;
-  --white: #ffffff;
+  --textcolor: #000000;
+  --backgroundcolor: #FDFBD4;
+  --bigtextsize: 3 em;
+  --smalltextsize: 1 em;
 }
 
 div {
@@ -15,7 +17,7 @@ div {
 }
 
 button {
-  color: var(--blue);
-  font-size: 3em;
+  color: var(--textcolor);
+  font-size: var(--smalltextsize);
   font-weight: bold;
 }
