@@ -4,9 +4,12 @@
   </head>
   <body>
     <div class="centerthis">
-      <button onmouseenter="alert(`DON'T PRESS IT`)" onclick="alert(`YOU PRESSED THE BUTTON NOOOOOOOOoooooo.....`); alert(`[ominous cackle]`); gogo();">THE BUTTON</button>
+      <button onmouseenter="r.style.setProperty('--blue', 'red'); alert(`DON'T PRESS IT`)" onclick="alert(`YOU PRESSED THE BUTTON NOOOOOOOOoooooo.....`); alert(`[ominous cackle]`); gogo();">THE BUTTON</button>
     </div>
-    
+
+    <script>
+      var r = document.querySelector(':root');
+    </script>
     <script src="button.js" type="text/javascript"></script>
   </body>
 </html>
