@@ -1,3 +1,8 @@
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
 .centerthis {
   height: 100%;
   display: flex;
@@ -6,7 +11,7 @@
 }
 
 button {
-  color: red;
+  color: var(--blue);
   font-size: 3em;
   font-weight: bold;
 }
