@@ -5,10 +5,6 @@ var prompt;
 var question;
 var responses = [];
 
-const promptsByLang = [promptsFR, promptsEN];
-const qsByLang = [qsFR, qsEN];
-const wordlistsByLang = [wordsFR, wordsEN];
-
 const promptsFR = [`Suivant`, `Debut de la liste de mots`]; //French prompts like "Next", "Finish", etc.
 const promptsEN = [`Next`, `Beginning of word list`]; //English versions of the above
 
@@ -17,6 +13,10 @@ const qsEN = []; //Questionnaire text in English
 
 const wordlistEN = [`word 1`, `word 2`, `word 3`]; //English wordlist
 const wordlistFR = [`mot 1`, `mot 2`, `mot 3`]; //French wordlist
+
+const promptsByLang = [promptsFR, promptsEN];
+const qsByLang = [qsFR, qsEN];
+const wordlistsByLang = [wordsFR, wordsEN];
 
 const narrative = `Beaucoup de mots`; //French narrative
 
