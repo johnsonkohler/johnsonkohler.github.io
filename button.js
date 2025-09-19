@@ -9,7 +9,7 @@ var listLang;
 var listIndex = -1;
 var listsRead = 0;
 
-var qIndex = -1;
+var qIndex = 0;
 
 const promptsFR = [`Suivant`, `Début de la liste de mots`, `Fin de la liste de mots. Prenez un pause!`, `Continuer au questionnaire`, `Terminer`]; //French prompts
 const promptsEN = [`Next`, `Beginning of word list`, `End of word list. Take a break!`, `Continue to Questionnaire`, `Finish`]; //English prompts
@@ -118,7 +118,7 @@ function run() {
   
     document.getElementById("startpage").remove();
   
-    alert(`JS updated 01:30`);
+    alert(`JS updated 01:53`);
   
     qbutton.innerHTML = prompt[0]; //Launch button --> Next button
     qbutton.setAttribute(`onclick`, `wordlist()`);
@@ -170,7 +170,7 @@ function questionnaire() {
   qbutton.innerHTML = prompt[0]; //Start questionnaire button --> Next question button
   qbutton.setAttribute(`onclick`, `q()`);
 
-  p1.innerHTML = question[0];
+  q();
 }
 
 
