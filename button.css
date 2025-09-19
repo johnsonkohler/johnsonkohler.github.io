@@ -24,13 +24,15 @@ body {
 }
 
 p, label, button {
-  font-family: --typeface;
+  font-family: var(--typeface);
   font-weight: 800;
-  font-size: --bigtextsize;
+  font-size: var(--bigtextsize);
+  color: var(--textcolor);
 }
 
 button {
   background-color: --buttoncolor;
+  color: var(--buttontextcolor);
 }
 
 /* 
