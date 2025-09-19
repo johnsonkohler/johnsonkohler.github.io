@@ -27,6 +27,9 @@ p, label, button {
   font-family: var(--typeface);
   font-weight: 800;
   font-size: var(--bigtextsize);
+}
+
+p, label {
   color: var(--textcolor);
 }
 
