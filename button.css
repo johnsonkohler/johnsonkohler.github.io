@@ -18,6 +18,7 @@ div {
   align-items: center;     /* vertical center */
 }
 
+/* 
 button {
   margin: auto;
   width: 10%;
@@ -26,3 +27,4 @@ button {
   color: var(--buttontextcolor);
   font-size: var(--smalltextsize);
 }
+*/
