@@ -1,4 +1,4 @@
-//global vars
+//---------------------------------------------------------------------------------- global vars
 
 var lang; //equals 0 (FR) or 1 (EN)
 var prompt;
@@ -15,17 +15,64 @@ const promptsEN = []; //English versions of the above
 const qsFR = []; //Questionnaire text in French
 const qsEN = []; //Questionnaire text in English
 
-const wordlistEN = []; //English wordlist
-const wordlistFR = []; //French wordlist
+const wordlistEN = [`word 1`, `word 2`, `word 3`]; //English wordlist
+const wordlistFR = [`mot 1`, `mot 2`, `mot 3`]; //French wordlist
 
-const narrative = `Words` //French narrative
+const narrative = `Beaucoup de mots`; //French narrative
 
-//--------------------------- on-load tasks:
+//---------------------------------------------------------------------------------- on-load tasks
 
 var r = document.querySelector(':root');
 
-//function for doubling and randomizing the wordlist goes here
-//call said function here
+//double and shuffle the wordlists
+
+function doubleAndShuffle(words) {
+  let tempwords = []; 
+  let temp = " ";
+
+  for (i=0; i<words.length; i++) {
+    tempwords.push(words[i]);
+  }
+
+  for (i=words.length-1; i>0; i--) {
+    let swap = Math.floor(Math.random()*(i+1));
+    
+    temp = words[swap];
+    words[swap] = words[i];
+    words[i] = temp;
+  }
+
+  for (i=words.length-1; i>0; i--) {
+    let swap = Math.floor(Math.random()*(i+1));
+    
+    temp = tempwords[swap];
+    tempwords[swap] = tempwords[i];
+    tempwords[i] = temp;
+  }
+
+  for (i=0; i<tempwords.length; i++) {
+    words.push(tempwords[i]);
+  }
+}
+
+doubleAndShuffle(wordsFR);
+doubleAndShuffle(wordsEN);
+
+
+
+//---------------------------------------------------------------------------------- startup page buttons
+
+//background and text color, TEST THIS
+
+function setCSSvar(var, value) {
+  r.style.setProperty(var, value);
+}
+
+function setLang(a) {
+  lang = a;
+  prompt = promptsByLang[a];
+  question = qsByLang[a];
+}
 
 
 //options for accessible colors:
