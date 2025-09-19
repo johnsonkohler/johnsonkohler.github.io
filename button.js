@@ -167,6 +167,8 @@ function wordlist() {
 function questionnaire() {
   alert(`All is working well so far!`);
 
+  setCSSvar('--textalign', 'left');
+
   qbutton.innerHTML = prompt[0]; //Start questionnaire button --> Next question button
   qbutton.setAttribute(`onclick`, `q()`);
 
