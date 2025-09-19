@@ -74,12 +74,6 @@ function setLang(a) {
   question = qsByLang[a];
 }
 
-// Launch button to delete customization elements
-
-function run() { 
-  document.getElementById("startpage").remove();
-}
-
 //options for accessible colors:
 // orange #daa337
 // yellow #eee462
@@ -91,7 +85,11 @@ function run() {
 
 //---------------------------------------------------------------------------------- wordlist section
 
+function run() { 
+  document.getElementById("startpage").remove();
 
+  
+}
 
 
 
