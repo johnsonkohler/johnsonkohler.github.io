@@ -41,7 +41,7 @@ label, button {
 button {
   background-color: var(--buttoncolor);
   color: var(--buttontextcolor);
-  width: 50%;
+  width: 10%;
 }
 
 /* 
