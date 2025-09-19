@@ -17,30 +17,31 @@ div {
   margin: auto;
 }
 
-/* .centerthis {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-} */
-
 body {
   background-color: var(--backgroundcolor);
+}
+
+p {
+  font-size: var(--bigtextsize);
 }
 
 p, label, button {
   font-family: var(--typeface);
   font-weight: 800;
-  font-size: var(--bigtextsize);
 }
 
 p, label {
   color: var(--textcolor);
 }
 
+label, button {
+  font-size: var(--smalltextsize);
+}
+
 button {
   background-color: var(--buttoncolor);
   color: var(--buttontextcolor);
+  width: 50%;
 }
 
 /* 
