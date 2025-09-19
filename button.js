@@ -5,8 +5,12 @@ var prompt;
 var question;
 var responses = [];
 
-const promptsFR = [`Suivant`, `Debut de la liste de mots`]; //French prompts like "Next", "Finish", etc.
-const promptsEN = [`Next`, `Beginning of word list`]; //English versions of the above
+var listLang; 
+var listIndex = -1;
+var listsRead = 0;
+
+const promptsFR = [`Suivant`, `Début de la liste de mots`, `Fin de la liste de mots. Prenez un pause!`, `Continuer au questionnaire`]; //French prompts
+const promptsEN = [`Next`, `Beginning of word list`, `End of word list. Take a break!`, `Continue to Questionnaire`]; //English prompts
 
 const qsFR = []; //Questionnaire text in French
 const qsEN = []; //Questionnaire text in English
@@ -16,7 +20,7 @@ const wordlistFR = [`mot 1`, `mot 2`, `mot 3`]; //French wordlist
 
 const promptsByLang = [promptsFR, promptsEN];
 const qsByLang = [qsFR, qsEN];
-const wordlistsByLang = [wordsFR, wordsEN];
+const list = [wordsFR, wordsEN];
 
 const narrative = `Beaucoup de mots`; //French narrative
 
@@ -95,17 +99,35 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 23:06`);
+  alert(`JS updated 23:24`);
 
   qbutton.innerHTML = prompt[0]; //Launch button --> Next button
   qbutton.setAttribute(`onclick`, `wordlist`);
   p1.innerHTML = prompt[1];
 
-  //choose a wordlist to go first
+  listLang = Math.floor(Math.random()*2); //choose a wordlist to go first
 }
 
 function wordlist() {
+  listIndex++;
   
+  if (listIndex < list[listLang].length) {
+    p1.innerHTML = list[listLang][listIndex];
+  } else if (listsRead == 0) {
+    p1.innerHTML = prompt[2];
+    listsRead++;
+  } else {
+    p1.innerHTML = prompt[2];
+    qbutton.innerHTML = prompt[3];
+    qbutton.setAttribute(`onclick`, `questionnaire`);
+  }
+}
+
+
+//---------------------------------------------------------------------------------- questionnaire
+
+function questionnaire() {
+  alert(`All is working well so far!`);
 }
 
 
