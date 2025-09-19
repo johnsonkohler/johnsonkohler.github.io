@@ -1,8 +1,8 @@
 :root {
-  --backgroundcolor: #FDFBD4;
+  --backgroundcolor: #000000;
   --buttoncolor: #000000;
   --buttontextcolor: #ffffff; 
-  --textcolor: #000000;
+  --textcolor: #ffffff;
   --bigtextsize: 3 em;
   --smalltextsize: 1 em;
   --typeface: calibri;
