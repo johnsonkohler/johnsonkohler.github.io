@@ -99,10 +99,10 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 23:34`);
+  alert(`JS updated 23:40`);
 
   qbutton.innerHTML = prompt[0]; //Launch button --> Next button
-  qbutton.setAttribute(`onclick`, `wordlist`);
+  qbutton.setAttribute(`onclick`, `wordlist()`);
   p1.innerHTML = prompt[1];
 
   listLang = Math.floor(Math.random()*2); //choose a wordlist to go first
@@ -119,7 +119,7 @@ function wordlist() {
   } else {
     p1.innerHTML = prompt[2];
     qbutton.innerHTML = prompt[3]; //continue to questionnaire
-    qbutton.setAttribute(`onclick`, `questionnaire`);
+    qbutton.setAttribute(`onclick`, `questionnaire()`);
   }
 }
 
