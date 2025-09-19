@@ -9,8 +9,8 @@ const promptsByLang = [promptsFR, promptsEN];
 const qsByLang = [qsFR, qsEN];
 const wordlistsByLang = [wordsFR, wordsEN];
 
-const promptsFR = []; //French prompts like "Next", "Finish", etc.
-const promptsEN = []; //English versions of the above
+const promptsFR = [`Suivant`, `Debut de la liste de mots`]; //French prompts like "Next", "Finish", etc.
+const promptsEN = [`Next`, `Beginning of word list`]; //English versions of the above
 
 const qsFR = []; //Questionnaire text in French
 const qsEN = []; //Questionnaire text in English
@@ -88,7 +88,15 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  
+  //Set the Launch button to say "Next" (prompt[0])
+
+  //Set p1 to read "Beginning of word list" (prompt[1])
+
+  //Set the Next button to run "wordlist"
+}
+
+function wordlist() {
+
 }
 
 
