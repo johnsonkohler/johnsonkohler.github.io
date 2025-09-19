@@ -3,7 +3,7 @@
 var lang = 2; //equals 0 (FR) or 1 (EN) or 2 (undefined)
 var prompt;
 var question;
-var responses = [];
+var responses = []; 
 
 var listLang; 
 var listIndex = -1;
