@@ -120,7 +120,7 @@ function run() {
   
     document.getElementById("startpage").remove();
   
-    alert(`JS updated 01:53`);
+    alert(`JS updated 02:32`);
   
     qbutton.innerHTML = prompt[0]; //Launch button --> Next button
     qbutton.setAttribute(`onclick`, `wordlist()`);
@@ -167,7 +167,6 @@ function wordlist() {
 //---------------------------------------------------------------------------------- questionnaire
 
 function questionnaire() {
-  alert(`All is working well so far!`);
 
   setCSSvar('--textalign', 'left');
 
