@@ -44,6 +44,8 @@ const qbutton = document.getElementById("qbutton");
 
 //---------------------------------------------------------------------------------- on-load tasks
 
+setCSSvar('--bigtextsize', '3em'); setCSSvar('--smalltextsize', '1.5em')
+
 //double and shuffle the wordlists
 
 function doubleAndShuffle(words) {
