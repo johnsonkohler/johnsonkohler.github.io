@@ -7,8 +7,8 @@
 
       <div id="startpage">
         <div>
-          <button>Français</button>
-          <button>English</button>
+          <button onclick="setLang(0)">Français</button>
+          <button onclick="setLang(1)">English</button>
         </div>
         <div>
           <label for="textsizeslider">Text size:   </label>
@@ -16,13 +16,13 @@
         </div>
         <div>
           <p>Background color:  </p>
-          <button>Light</button>
-          <button>Black</button>
+          <button onclick="setCSSvar('--backgroundcolor', '#FDFBD4')">Light</button>
+          <button onclick="setCSSvar('--backgroundcolor', '#000000')">Black</button>
         </div>
         <div>
           <p>Text color:   </p>
-          <button>Black</button>
-          <button>White</button>
+          <button onclick="setCSSvar('--textcolor', '#000000')">Black</button>
+          <button onclick="setCSSvar('--textcolor', '#ffffff')">White</button>
         </div>
       </div>
     
