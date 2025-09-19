@@ -46,7 +46,7 @@ label, button {
 button {
   background-color: var(--buttoncolor);
   color: var(--buttontextcolor);
-  width: 10%;
+  width: 25%;
   text-align: center;
 }
 
