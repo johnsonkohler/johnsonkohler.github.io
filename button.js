@@ -146,6 +146,7 @@ function wordlist() {
   
   if (listIndex < list[listLang].length) {
     if (listLang == 0) p1.innerHTML = `${contextSentence} « Dit ${list[listLang][listIndex]} deux fois. »`;
+    if (listLang == 0 && listIndex == list[listLang].length-1) p1.innerHTML = `« ${list[listLang][listIndex]} »`
     if (listLang == 1) p1.innerHTML = `${contextSentence} "Say ${list[listLang][listIndex]} twice."`;
   } else if (listsRead == 0) {
     p1.innerHTML = prompt[2]; //end of wordlist take a break
@@ -185,9 +186,6 @@ function q() {
     answers += "; ";
   }
 
-  input1.value = "";
-  input2.value = "";
-
   input1.setAttribute("type", formats[qIndex][0]);
   input2.setAttribute("type", formats[qIndex][1]);
 
@@ -199,6 +197,9 @@ function q() {
     input2.setAttribute("style", "height: 100px");
   }
 
+  input1.value = "";
+  input2.value = "";
+  
   for (i=0; i<6; i++) {
     if (i < question[qIndex].length) {
       document.getElementById(space[i]).innerHTML = question[qIndex][i];
