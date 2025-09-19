@@ -91,6 +91,7 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
+  alert(`JS updated 22:23`);
   //Set the Launch button to say "Next" (prompt[0])
 
   //Set p1 to read "Beginning of word list" (prompt[1])
