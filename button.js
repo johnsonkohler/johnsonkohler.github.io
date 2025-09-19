@@ -62,14 +62,14 @@ doubleAndShuffle(wordsEN);
 
 //background and text color, TEST THIS
 
-var r = document.querySelector(':root');
 
 function setCSSvar(vari, value) {
+  var r = document.querySelector(':root');
   r.style.setProperty(vari, value);
 }
 
-setCSSvar('--buttontextcolor', '#000000');
-r.style.setProperty('--buttoncolor', '#000000');
+//setCSSvar('--buttontextcolor', '#000000');
+//r.style.setProperty('--buttoncolor', '#000000');
 
 function setLang(a) {
   lang = a;
