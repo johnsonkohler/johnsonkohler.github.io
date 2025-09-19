@@ -18,6 +18,10 @@ div {
   margin: auto;
 }
 
+input {
+  width: 50%;
+}
+
 body {
   background-color: var(--backgroundcolor);
 }
