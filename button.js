@@ -99,7 +99,7 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 23:30`);
+  alert(`JS updated 23:34`);
 
   qbutton.innerHTML = prompt[0]; //Launch button --> Next button
   qbutton.setAttribute(`onclick`, `wordlist`);
@@ -114,11 +114,11 @@ function wordlist() {
   if (listIndex < list[listLang].length) {
     p1.innerHTML = list[listLang][listIndex];
   } else if (listsRead == 0) {
-    p1.innerHTML = prompt[2];
+    p1.innerHTML = prompt[2]; //end of wordlist take a break
     listsRead++;
   } else {
     p1.innerHTML = prompt[2];
-    qbutton.innerHTML = prompt[3];
+    qbutton.innerHTML = prompt[3]; //continue to questionnaire
     qbutton.setAttribute(`onclick`, `questionnaire`);
   }
 }
