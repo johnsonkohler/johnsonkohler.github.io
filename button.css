@@ -14,14 +14,15 @@ div {
 
 .centerthis {
   text-align: center;
+  margin: auto;
 }
 
 /* .centerthis {
   height: 100%;
   display: flex;
-  justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center */
-} *?
+  justify-content: center;
+  align-items: center;     
+} */
 
 body {
   background-color: var(--backgroundcolor);
