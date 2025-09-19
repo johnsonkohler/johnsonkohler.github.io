@@ -68,6 +68,9 @@ function setCSSvar(vari, value) {
   r.style.setProperty(vari, value);
 }
 
+setCSSvar('--buttontextcolor', '#000000');
+r.style.setProperty('--buttoncolor', '#000000');
+
 function setLang(a) {
   lang = a;
   prompt = promptsByLang[a];
