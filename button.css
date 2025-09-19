@@ -31,7 +31,7 @@ p, label, button {
 }
 
 button {
-  background-color: --buttoncolor;
+  background-color: var(--buttoncolor);
   color: var(--buttontextcolor);
 }
 
