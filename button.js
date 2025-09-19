@@ -116,7 +116,7 @@ function run() {
   
     document.getElementById("startpage").remove();
   
-    alert(`JS updated 00:04`);
+    alert(`JS updated 00:34`);
   
     qbutton.innerHTML = prompt[0]; //Launch button --> Next button
     qbutton.setAttribute(`onclick`, `wordlist()`);
