@@ -6,7 +6,7 @@
   <body>
     
       <div>
-        <p id="p1">HTML updated 00:40</p>
+        <p id="p1">HTML updated 01:16</p>
         <p id="little-p1"></p>
       </div>
 
@@ -21,12 +21,16 @@
           <button onclick="setLang(1)">English</button>
         </div>
         <div>
+          <p>Typeface:    </p>
           <button onclick="setCSSvar('--typeface', 'calibri')">Calibri</button>
           <button onclick="setCSSvar('--typeface', 'opendyslexic')">Open Dyslexic</button>
         </div>
         <div>
           <label for="textsizeslider">Text size:   </label>
           <input id="textsizeslider" type="range" min="1" max="10">
+          <button onclick="setCSSvar('--bigtextsize', '3em'); setCSSvar('--smalltextsize', '1.5em')">Small</button>
+          <button onclick="setCSSvar('--bigtextsize', '6em'); setCSSvar('--smalltextsize', '3em')">Medium</button>
+          <button onclick="setCSSvar('--bigtextsize', '8em'); setCSSvar('--smalltextsize', '4em')">Large</button>
         </div>
         <div>
           <p>Background color:  </p>
