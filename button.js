@@ -99,7 +99,7 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 23:28`);
+  alert(`JS updated 23:30`);
 
   qbutton.innerHTML = prompt[0]; //Launch button --> Next button
   qbutton.setAttribute(`onclick`, `wordlist`);
