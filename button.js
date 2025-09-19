@@ -64,8 +64,8 @@ doubleAndShuffle(wordsEN);
 
 //background and text color, TEST THIS
 
-function setCSSvar(var, value) {
-  r.style.setProperty(var, value);
+function setCSSvar(vari, value) {
+  r.style.setProperty(vari, value);
 }
 
 function setLang(a) {
@@ -74,6 +74,11 @@ function setLang(a) {
   question = qsByLang[a];
 }
 
+// Launch button to delete customization elements
+
+function run() { 
+  document.getElementById("startpage").remove();
+}
 
 //options for accessible colors:
 // orange #daa337
@@ -84,7 +89,7 @@ function setLang(a) {
 // black #000000
 
 
-
+//---------------------------------------------------------------------------------- wordlist section
 
 
 
