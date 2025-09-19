@@ -35,7 +35,7 @@ p {
 
 p, label, button {
   font-family: var(--typeface);
-  font-weight: 800;
+  font-weight: normal;
 }
 
 p, label {
