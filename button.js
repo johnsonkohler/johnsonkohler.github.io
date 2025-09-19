@@ -15,7 +15,7 @@ const promptsFR = [`Suivant`, `Début de la liste de mots`, `Fin de la liste de 
 const promptsEN = [`Next`, `Beginning of word list`, `End of word list. Take a break!`, `Continue to Questionnaire`, `Finish`]; //English prompts
 
 const wordlistFR = [`fie`, `vie`, `scie`, `dit`, `chie`, `sept`, `dette`, `cède`, `sèche`, `dose`, `chose`, `t’oses`, `t’ôtes`, `sache`, `tache`, `vache`, `chatte`, `douze`, `sou`, `fou`, `vous`, `chou`, `doux`, `tout`, `château`, `gâteau`, `pâteux`, `pâte`, `tasse`, `basse`, `bail`, `maille`, `taille`, `paille`, `veine`, `aime`, `pi`, `habit`, `dôme`, `soute`, `coude`, `sauterelle`, `chanterelle`, `magie`, `surprise`, `gamme`];
-const wordlistEN = [`fee`, `vee`, `see`, `Dee`, `she`, `set`, `debt`, `said`, `sesh`, `doze`, `shows`, `toes`, `tote `, `sash`, `stash`, `vash`, `shat`, `dues`, `sue`, `Shaw`, `sod`, `hot`, `hawed`, `pot`, `toss`, `boss`, `bye`, `my`, `tie`, `pie`, `Venn`, `em`, `pee`, `abbey`, `dome`, `soot`, `could`, `dragonfly`, `chant`, `magic`, `surprise`, `masterful`]; 
+const wordlistEN = [`fee`, `vee`, `see`, `Dee`, `she`, `set`, `debt`, `said`, `sesh`, `doze`, `dose`, `shows`, `toes`, `tote `, `sash`, `stash`, `vash`, `shat`, `dues`, `sue`, `Shaw`, `sod`, `hot`, `hawed`, `pot`, `toss`, `boss`, `bye`, `my`, `tie`, `pie`, `Venn`, `em`, `pee`, `abbey`, `dome`, `soot`, `could`, `dragonfly`, `chant`, `magic`, `surprise`, `masterful`]; 
 const context = [[`fie`, `Je me fie à toi.`], [`t’oses`, `Quand tu oses me contredire, t’oses me manquer de respect.`], [`t’ôtes`, `Tu ôtes ton manteau puis t’ôtes ton pull.`], [`tache`, `Il y a une tache de moutarde sur son chandail.`], [`pâteux`, `Le riz était plus pâteux que d’habitude.`], [`doze`, `The cat likes to doze on the rug.`], [`hawed`, `He hemmed and hawed.`]];
 
 //Questionnaire text in FR then EN
@@ -85,7 +85,7 @@ wordlistFR.push(narrative);
 
 //---------------------------------------------------------------------------------- startup page buttons
 
-//background and text color, TEST THIS
+//background and text color
 
 
 function setCSSvar(vari, value) {
@@ -120,7 +120,7 @@ function run() {
   
     document.getElementById("startpage").remove();
   
-    alert(`JS updated 02:32`);
+    // alert(`JS updated 02:32`);
   
     qbutton.innerHTML = prompt[0]; //Launch button --> Next button
     qbutton.setAttribute(`onclick`, `wordlist()`);
