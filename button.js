@@ -22,8 +22,6 @@ const narrative = `Beaucoup de mots`; //French narrative
 
 //---------------------------------------------------------------------------------- on-load tasks
 
-var r = document.querySelector(':root');
-
 //double and shuffle the wordlists
 
 function doubleAndShuffle(words) {
@@ -63,6 +61,8 @@ doubleAndShuffle(wordsEN);
 //---------------------------------------------------------------------------------- startup page buttons
 
 //background and text color, TEST THIS
+
+var r = document.querySelector(':root');
 
 function setCSSvar(vari, value) {
   r.style.setProperty(vari, value);
