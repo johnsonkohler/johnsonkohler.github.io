@@ -20,6 +20,9 @@ const wordlistFR = [`mot 1`, `mot 2`, `mot 3`]; //French wordlist
 
 const narrative = `Beaucoup de mots`; //French narrative
 
+const qbutton = document.getElementById("qbutton");
+const p1 = document.getElementById("p1");
+
 //---------------------------------------------------------------------------------- on-load tasks
 
 //double and shuffle the wordlists
@@ -55,6 +58,7 @@ function doubleAndShuffle(words) {
 
 doubleAndShuffle(wordsFR);
 doubleAndShuffle(wordsEN);
+wordsFR.push(narrative);
 
 
 
@@ -91,16 +95,17 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 22:23`);
-  //Set the Launch button to say "Next" (prompt[0])
+  alert(`JS updated 22:53`);
 
-  //Set p1 to read "Beginning of word list" (prompt[1])
+  qbutton.innerHTML = prompt[0]; //Launch button --> Next button
+  qbutton.setAttribute(`onclick`, `wordlist`);
+  p1.innerHTML = prompt[1];
 
-  //Set the Next button to run "wordlist"
+  //choose a wordlist to go first
 }
 
 function wordlist() {
-
+  
 }
 
 
