@@ -118,7 +118,7 @@ function run() {
   
     document.getElementById("startpage").remove();
   
-    alert(`JS updated 01:04`);
+    alert(`JS updated 01:20`);
   
     qbutton.innerHTML = prompt[0]; //Launch button --> Next button
     qbutton.setAttribute(`onclick`, `wordlist()`);
@@ -137,14 +137,14 @@ function wordlist() {
   if (listIndex < list[listLang].length) {
     for (i=0; i<context.length; i++) {
       if (list[listLang][listIndex] == context[i][0]) {
-        contextSentence = `context[i][1] <br><br> `;
+        contextSentence = `${context[i][1]} <br><br> `;
       }
     }
   }
   
   if (listIndex < list[listLang].length) {
-    if (lang == 0) p1.innerHTML = `${contextSentence} + « Dit ${list[listLang][listIndex]} deux fois. »`;
-    if (lang == 1) p1.innerHTML = `${contextSentence} + "Say ${list[listLang][listIndex]} twice."`;
+    if (lang == 0) p1.innerHTML = `${contextSentence} « Dit ${list[listLang][listIndex]} deux fois. »`;
+    if (lang == 1) p1.innerHTML = `${contextSentence} "Say ${list[listLang][listIndex]} twice."`;
   } else if (listsRead == 0) {
     p1.innerHTML = prompt[2]; //end of wordlist take a break
     listsRead++;
