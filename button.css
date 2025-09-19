@@ -7,6 +7,7 @@
   --smalltextsize: 1 em;
   --typeface: calibri;
   --textalign: center;
+  --inputfontsize: 15px;
 }
 
 div {
@@ -21,6 +22,7 @@ div {
 input {
   width: 50%;
   height: 100px;
+  font-size: var(--inputfontsize);
 }
 
 body {
