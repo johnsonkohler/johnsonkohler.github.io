@@ -20,7 +20,7 @@ const wordlistFR = [`mot 1`, `mot 2`, `mot 3`]; //French wordlist
 
 const promptsByLang = [promptsFR, promptsEN];
 const qsByLang = [qsFR, qsEN];
-const list = [wordsFR, wordsEN];
+const list = [wordlistFR, wordlistEN];
 
 const narrative = `Beaucoup de mots`; //French narrative
 
@@ -60,9 +60,9 @@ function doubleAndShuffle(words) {
   }
 }
 
-doubleAndShuffle(wordsFR);
-doubleAndShuffle(wordsEN);
-wordsFR.push(narrative);
+doubleAndShuffle(wordlistFR);
+doubleAndShuffle(wordlistEN);
+wordlistFR.push(narrative);
 
 
 
@@ -99,7 +99,7 @@ function setLang(a) {
 function run() { 
   document.getElementById("startpage").remove();
 
-  alert(`JS updated 23:24`);
+  alert(`JS updated 23:28`);
 
   qbutton.innerHTML = prompt[0]; //Launch button --> Next button
   qbutton.setAttribute(`onclick`, `wordlist`);
