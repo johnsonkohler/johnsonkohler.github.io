@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-19 18:05")
+console.log("Last updated 2026-02-19 18:09")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -65,7 +65,7 @@ function newQuestionSettingOne() {
   for (const entry of currentWord) {
     if (entry[0][varToChange] != newValue) continue;
     var valid = true;
-    for (const j=0; j<entry[0].length; j++) {
+    for (var j=0; j<entry[0].length; j++) {
       if (j == varToChange) continue;
       if (entry[0][j] == "" || currentQuestion[0][j] == "" || entry[0][j] == currentQuestion[0][j]) continue;
       valid = false;
