@@ -1,14 +1,11 @@
 // --------------------------------------------------------------------- global: dictionary
 
-const dictionary 
-// =
-// [  [ ["1st", "sing", "present"], ["I dive"] ],  [ ["3rd", "sing", "present"], ["she dives"] ],  [ ["", "", "past"], ["dived", "dove"] ],  [ ["", "", "inf"], ["to dive"] ]  ]
-// [  [ ["1st", "sing", "present"], ["I run"] ],  [ ["3rd", "sing", "present"], ["she runs"] ],  [ ["", "", "past"], ["ran"] ],  [ ["", "", "inf"], ["to run"] ]  ]
-// [  [ ["1st", "sing", "present"], ["I can"] ],  [ ["3rd", "sing", "present"], ["she can"] ],  [ ["", "", "past"], ["could"] ]  ]
+const dictionary = [[  [ ["1st", "sing", "present"], ["I dive"] ],  [ ["3rd", "sing", "present"], ["she dives"] ],  [ ["", "", "past"], ["dived", "dove"] ],  [ ["", "", "inf"], ["to dive"] ]  ], [  [ ["1st", "sing", "present"], ["I run"] ],  [ ["3rd", "sing", "present"], ["she runs"] ],  [ ["", "", "past"], ["ran"] ],  [ ["", "", "inf"], ["to run"] ]  ], [  [ ["1st", "sing", "present"], ["I can"] ],  [ ["3rd", "sing", "present"], ["she can"] ],  [ ["", "", "past"], ["could"] ]  ]]
 
 // --------------------------------------------------------------------- global: acceptable values
 
-const acceptableValues
+const acceptableValues = [["1st", "3rd"], ["sing"], ["present", "past", "inf"]];
+
 // =
 // gender: ["m.", "f.", "n."]
 // case: ["nom."]
@@ -55,28 +52,29 @@ function newQuestionSettingOne() {
   wordUses++;
 
   //-------------------------------------------------------------------- Selecting an answer
+  var validAnswersCollected = false;
 
+  while (!validAnswersCollected) {
   const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
   const newValue = currentQuestion[0][varToChange];
   while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
 
-  //run through the sub-entries of currentWord and collect any where, for all j EXCEPT x, 
-  // (currentWord[i][0][j] == "" || currentQuestion[0][j] == "" || currentWord[i][0][j] == currentQuestion[0][j])
-  // AND currentWord[i][0][x] == tempX;
-  //double-check that the new surface form isn't the same as the old surface form
-  
   validAnswers = [];
   for (const entry of currentWord) {
     if (entry[0][varToChange] != newValue) continue;
+    var valid = true;
     for (const j=0; j<entry[0].length; j++) {
       if (j == varToChange) continue;
-      if (entry[0][j] == "" || currentQuestion[0][j] == "" || entry[0][j] == currentQuestion[0][j]) validAnswers.push(entry);
-      //no the above line is very wrong, fix the logic
+      if (entry[0][j] == "" || currentQuestion[0][j] == "" || entry[0][j] == currentQuestion[0][j]) continue;
+      valid = false;
     }
+    if (valid) validAnswers.push(entry);
   }
   console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newVal}\".\nvalid Answers: ${validAnswers}`);
-  //assume for now that the above loop spits out an array of subentries of currentWord that could be answers
-
+    
+  if (validAnswers.length > 0) validAnswersCollected = true;
+  }
+  
   var tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
   while (tentative[1] == currentQuestion[1]) tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
   
