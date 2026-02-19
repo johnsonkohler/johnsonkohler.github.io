@@ -56,7 +56,7 @@ function newQuestionSettingOne() {
 
   while (!validAnswersCollected) {
   const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
-  const newValue = currentQuestion[0][varToChange];
+  var newValue = currentQuestion[0][varToChange];
   while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
 
   validAnswers = [];
