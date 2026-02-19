@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-19 18:09")
+console.log("Last updated 2026-02-19 18:24")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -59,6 +59,7 @@ function newQuestionSettingOne() {
   while (!validAnswersCollected) {
   const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
   var newValue = currentQuestion[0][varToChange];
+  if (acceptableValues[varToChange].length < 2) continue;
   while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
 
   validAnswers = [];
@@ -73,8 +74,10 @@ function newQuestionSettingOne() {
     if (valid) validAnswers.push(entry);
   }
   console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newVal}\".\nvalid Answers: ${validAnswers}`);
-    
-  if (validAnswers.length > 0) validAnswersCollected = true;
+
+  var existsNewAnswerLine = false
+  for (const validAnswer of validAnswers) if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
+  if (validAnswers.length > 0 && existsNewAnswerLine) validAnswersCollected = true;
   }
   
   var tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
