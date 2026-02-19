@@ -73,7 +73,7 @@ function newQuestionSettingOne() {
     }
     if (valid) validAnswers.push(entry);
   }
-  console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newVal}\".\nvalid Answers: ${validAnswers}`);
+  console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newValue}\".\nvalid Answers: ${validAnswers}`);
 
   var existsNewAnswerLine = false
   for (const validAnswer of validAnswers) if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
