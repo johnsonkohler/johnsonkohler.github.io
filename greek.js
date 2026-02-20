@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-20 15:38")
+console.log("Last updated 2026-02-20 15:40")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -106,7 +106,7 @@ function checkAnswer() {
   const inputs = document.getElementsByName("answerBox");
   var answers = [];
   for (var i=0; i<inputs.length; i++) {
-    answers.push(inputs[i].value);
+    if (inputs[i].value != "") answers.push(inputs[i].value);
     inputs[i].value = "";
   }
   console.log("Correct answer(s): " + correctAnswer[1]);
