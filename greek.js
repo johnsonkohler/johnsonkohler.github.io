@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-20 14:57")
+console.log("Last updated 2026-02-20 15:28")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -88,9 +88,11 @@ function newQuestionSettingOne() {
 
   //-------------------------------------------------------------------- Display
 
-  //display question text:
-  promptWord.innerText = currentQuestion[1];
   var promptText = "";
+  for (var i=0; i<currentQuestion[1].length; i++) promptText += currentQuestion[1][i] + " "
+  promptWord.innerText = promptText;
+  
+  promptText = "";
   for (var i=0; i<correctAnswer[0].length; i++) promptText += correctAnswer[0][i] + " "
   promptForm.innerText = promptText;
 
@@ -98,6 +100,8 @@ function newQuestionSettingOne() {
 
 function checkAnswer() {
 
+  console.log("Marking answer:")
+  
   //collect inputs
   const inputs = document.getElementsByName("answerBox");
   var answers = [];
@@ -105,11 +109,13 @@ function checkAnswer() {
     answers.push(inputs[i].value);
     inputs[i].value = "";
   }
+  console.log("Correct answer(s): " + correctAnswer[1]);
+  console.log("User's answer(s): " + answers);
 
   //check to make sure all correct answers are represented
   var allCorrect = true;
-  for (var answer of correctAnswer[1]) {
-    for (var i=0; i<answers.length; i++) if (answer == answers[i]) continue;
+  for (var i=0; i<correctAnswer[1].length; i++) {
+    for (var j=0; j<answers.length; j++) if (correctAnswer[i] == answers[j]) continue;
     allCorrect = false;
   }
 
@@ -127,8 +133,6 @@ function checkAnswer() {
     feedback.innerText = "Nope. Correct answer: " + correctAnswer;
   }
   
-  //If (input == correctAnswer[0]), display "correct!". Otherwise display "incorrect" and correctAnswer.
-  //For questions with several answers, the entry in correctAnswer will be an array. Make sure the multiple-input formats it the same way.
   newQuestionSettingOne();
 }
 
