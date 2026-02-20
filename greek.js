@@ -69,7 +69,7 @@ function newQuestionSettingOne() {
   //-------------------------------------------------------------------- Selecting an answer
   var validAnswersCollected = false;
   var attempts = 0;
-  const maxAttempts = currentWord.length;
+  const maxAttempts = currentWord.length*10;
 
   while (!validAnswersCollected) {
   attempts++;
