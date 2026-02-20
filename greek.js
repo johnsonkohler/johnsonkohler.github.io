@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-20 16:45")
+console.log("Last updated 2026-02-20 18:08")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -24,6 +24,8 @@ var currentQuestion = ""; //sub-entry containing the displayed PROMPT WORD and i
 var correctAnswer = ""; //the sub-entry containing the hidden ANSWER WORD and its displayed INFLECTION DATA
 var wordUses = 0;
 
+var recentAnswers = [];
+
 const promptWord = document.getElementById("promptWord");
 const promptForm = document.getElementById("promptForm");
 const answerBox = document.getElementById("answerBox");
@@ -40,6 +42,7 @@ function newQuestionSettingOne() {
   submitButton.setAttribute("value", "Check");
   
   feedback.innerText = "Conjugate the verb above in the form provided.";
+  for (var i=0; i<document.getElementsByName("answerBox").length; i++) document.getElementsByName("answerBox")[i].value = "";
 
   // Math.floor(Math.random() * 10) returns a random int 0 through 9 inclusive
   
@@ -51,17 +54,26 @@ function newQuestionSettingOne() {
     while (temp == currentWord) temp = dictionary[Math.floor(Math.random() * dictionary.length)]
     currentWord = temp;
 
+    recentAnswers = [];
+
     currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]
   }
   else {
+    recentAnswers.push(currentQuestion);
+    recentAnswers.push(correctAnswer);
+    // ^ new
     currentQuestion = correctAnswer;
   }
   wordUses++;
 
   //-------------------------------------------------------------------- Selecting an answer
   var validAnswersCollected = false;
+  var attempts = 0;
+  const maxAttempts = currentWord.length;
 
   while (!validAnswersCollected) {
+  attempts++;
+    
   const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
   var newValue = currentQuestion[0][varToChange];
   if (acceptableValues[varToChange].length < 2) continue;
@@ -78,15 +90,36 @@ function newQuestionSettingOne() {
     }
     if (valid) validAnswers.push(entry);
   }
-  //console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newValue}\".\nvalid Answers: ${validAnswers}`);
 
   var existsNewAnswerLine = false
-  for (const validAnswer of validAnswers) if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
+  for (var i=0; i<validAnswers.length; i++) {
+    //replacing if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
+    var recentlyUsed = false;
+    for (const recentAnswer of recentAnswers) if (validAnswers[i][1] == recentAnswer[1]) recentlyUsed = true;
+    if (!recentlyUsed) {
+      existsNewAnswerLine = true;
+    } else {
+      var tempArr = [];
+      for (var j=0; j<i; j++) tempArr.push(validAnswers[j]);
+      for (var j=i+1; j<validAnswers.length; j++) tempArr.push(validAnswers[j]);
+      validAnswers = tempArr;
+      i--;
+    }
+  }
   if (validAnswers.length > 0 && existsNewAnswerLine) validAnswersCollected = true;
+    
+  if (attempts > maxAttempts) {
+    validAnswers = [];
+    var randomNewAnswer = currentWord[Math.floor(Math.random() * currentWord.length)];
+    while (randomNewAnswer[1] == currentQuestion[1]) randomNewAnswer = currentWord[Math.floor(Math.random() * currentWord.length)];
+    validAnswers.push(randomNewAnswer);
+    break;
+  }
   }
   
   var tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
-  while (tentative[1] == currentQuestion[1]) tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
+  
+  // ^ replacing while (tentative[1] == currentQuestion[1]) tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
   
   correctAnswer = tentative;
 
@@ -112,7 +145,6 @@ function checkAnswer() {
   var userAnswers = [];
   for (var i=0; i<inputs.length; i++) {
     if (inputs[i].value != "") userAnswers.push(inputs[i].value);
-    inputs[i].value = "";
   }
 
   //check to make sure all correct answers were inputted
