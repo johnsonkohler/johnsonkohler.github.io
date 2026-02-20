@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-20 15:40")
+console.log("Last updated 2026-02-20 16:45")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -27,6 +27,7 @@ var wordUses = 0;
 const promptWord = document.getElementById("promptWord");
 const promptForm = document.getElementById("promptForm");
 const answerBox = document.getElementById("answerBox");
+const submitButton = document.getElementById("submitButton");
 const feedback = document.getElementById("feedback");
 
 // --------------------------------------------------------------------- defining setting 1
@@ -34,6 +35,9 @@ const feedback = document.getElementById("feedback");
 function newQuestionSettingOne() {
 
   //-------------------------------------------------------------------- Setup
+
+  submitButton.setAttribute("onclick", "event.preventDefault(); checkAnswer();")
+  submitButton.setAttribute("value", "Check");
   
   feedback.innerText = "Conjugate the verb above in the form provided.";
 
@@ -87,9 +91,12 @@ function newQuestionSettingOne() {
   correctAnswer = tentative;
 
   //-------------------------------------------------------------------- Display
-
+  
   var promptText = "";
-  for (var i=0; i<currentQuestion[1].length; i++) promptText += currentQuestion[1][i] + " "
+  for (var i=0; i<currentQuestion[1].length-1; i++) {
+      promptText += ` ${currentQuestion[1][i]}` + ",";
+    }
+  promptText += ` ${currentQuestion[1][currentQuestion[1].length-1]}`;
   promptWord.innerText = promptText;
   
   promptText = "";
@@ -99,41 +106,48 @@ function newQuestionSettingOne() {
 }
 
 function checkAnswer() {
-
-  console.log("Marking answer:")
   
   //collect inputs
   const inputs = document.getElementsByName("answerBox");
-  var answers = [];
+  var userAnswers = [];
   for (var i=0; i<inputs.length; i++) {
-    if (inputs[i].value != "") answers.push(inputs[i].value);
+    if (inputs[i].value != "") userAnswers.push(inputs[i].value);
     inputs[i].value = "";
   }
-  console.log("Correct answer(s): " + correctAnswer[1]);
-  console.log("User's answer(s): " + answers);
 
-  //check to make sure all correct answers are represented
+  //check to make sure all correct answers were inputted
   var allCorrect = true;
   for (var i=0; i<correctAnswer[1].length; i++) {
-    for (var j=0; j<answers.length; j++) if (correctAnswer[i] == answers[j]) continue;
-    allCorrect = false;
+    for (var j=0; j<userAnswers.length+1; j++) {
+      if (correctAnswer[1][i] == userAnswers[j]) break;
+      if (j == userAnswers.length) allCorrect = false;
+    }
   }
 
   //check to make sure no incorrect answers are represented
   var noneWrong = true;
-  for (var i=0; i<answers.length; i++) {
-    for (var answer of correctAnswer[1]) if (answer == answers[i] || answers[i] == "") continue;
-    noneWrong = false;
+  for (var i=0; i<userAnswers.length; i++) {
+    for (var j=0; j<correctAnswer[1].length; j++) {
+      if (correctAnswer[1][j] == userAnswers[i]) break;
+      if (j == correctAnswer[1].length) noneWrong = false;
+    }
   }
 
   //display feedback
   if (allCorrect && noneWrong) {
     feedback.innerText = "Correct!"
   } else {
-    feedback.innerText = "Nope. Correct answer: " + correctAnswer;
+    feedback.innerText = "Nope. Correct answer:";
+    for (var i=0; i<correctAnswer[1].length-1; i++) {
+      feedback.innerText += ` ${correctAnswer[1][i]}` + ",";
+    }
+    feedback.innerText += ` ${correctAnswer[1][correctAnswer[1].length-1]}`;
   }
-  
-  newQuestionSettingOne();
+
+  //update button
+  submitButton.setAttribute("onclick", "event.preventDefault(); newQuestionSettingOne();")
+  submitButton.setAttribute("value", "Next");
+
 }
 
 function addField() {
