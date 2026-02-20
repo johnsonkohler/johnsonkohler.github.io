@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-19 19:51")
+console.log("Last updated 2026-02-19 20:58")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -73,7 +73,7 @@ function newQuestionSettingOne() {
     }
     if (valid) validAnswers.push(entry);
   }
-  console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newValue}\".\nvalid Answers: ${validAnswers}`);
+  //console.log(`Changing \"${currentQuestion[0][varToChange]}\" to \"${newValue}\".\nvalid Answers: ${validAnswers}`);
 
   var existsNewAnswerLine = false
   for (const validAnswer of validAnswers) if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
@@ -96,8 +96,36 @@ function newQuestionSettingOne() {
 }
 
 function checkAnswer() {
-  //Collect input(s)
-  //Wipe answer box fields
+
+  //collect inputs
+  const inputs = document.getElementsByName("answerBox");
+  var answers = [];
+  for (var i=0; i<inputs.length; i++) {
+    answers.push(inputs[i].value);
+    inputs[i].value = "";
+  }
+
+  //check to make sure all correct answers are represented
+  var allCorrect = true;
+  for (var answer of correctAnswer[1]) {
+    for (var i=0; i<answers.length; i++) if (answer == answers[i]) continue;
+    allCorrect = false;
+  }
+
+  //check to make sure no incorrect answers are represented
+  var noneWrong = true;
+  for (var i=0; i<answers.length; i++) {
+    for (var answer of correctAnswer[1]) if (answer == answers[i] || answers[i] == "") continue;
+    noneWrong = false;
+  }
+
+  //display feedback
+  if (allCorrect && noneWrong) {
+    feedback.innerText = "Correct!"
+  } else {
+    feedback.innerText = "Nope. Correct answer: " + correctAnswer;
+  }
+  
   //If (input == correctAnswer[0]), display "correct!". Otherwise display "incorrect" and correctAnswer.
   //For questions with several answers, the entry in correctAnswer will be an array. Make sure the multiple-input formats it the same way.
   newQuestionSettingOne();
