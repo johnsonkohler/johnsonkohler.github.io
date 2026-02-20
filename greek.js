@@ -89,7 +89,9 @@ function newQuestionSettingOne() {
 
   //display question text:
   promptWord.innerText = currentQuestion[1];
-  promptForm.innerText = correctAnswer[0];
+  var promptText = "";
+  for (var i=0; i<correctAnswer[0].length; i++) promptText += correctAnswer[0][i] + " "
+  promptForm.innerText = promptText;
 
 }
 
