@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-19 20:58")
+console.log("Last updated 2026-02-20 14:57")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -27,6 +27,7 @@ var wordUses = 0;
 const promptWord = document.getElementById("promptWord");
 const promptForm = document.getElementById("promptForm");
 const answerBox = document.getElementById("answerBox");
+const feedback = document.getElementById("feedback");
 
 // --------------------------------------------------------------------- defining setting 1
 
@@ -34,7 +35,7 @@ function newQuestionSettingOne() {
 
   //-------------------------------------------------------------------- Setup
   
-  //suppress default on Submit button
+  feedback.innerText = "Conjugate the verb above in the form provided.";
 
   // Math.floor(Math.random() * 10) returns a random int 0 through 9 inclusive
   
