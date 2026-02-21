@@ -1,0 +1,89 @@
+<html>
+  <body>
+    <div><h2>Greek Forms - Dictionary Formatter</h2></div>
+    <p>Last updated: 2026-02-29 21:00</p>
+
+    <p>Save your work:</p>
+    <input id="output" type="text">
+    <button onclick="parse()">Parse</button>
+    <p>(Remember to copy the text!)</p>
+    <br>
+    <p>Restore your work:</p>
+    <input id="restore" type="text">
+    <button onclick="restore()">Restore</button>
+    <p>(This doesn't work yet.)</p>
+    <br>
+
+    <script>
+      const gender = ["m.", "f.", "n."]
+const cases = ["nom."]
+const person = ["1st", "2nd", "3rd"]
+const number = ["sing.", "pl."]
+const tense = ["pres.", "fut.", "imperf.", "aor."]
+const voice = ["act.", "mid.", "pass."]
+const mood = ["ind.", "imp.", "inf.", "part."]
+
+const output = document.getElementById("output");
+
+function parse() {
+  output.value = "";
+  output.value += "[";
+
+  var pos = 0;
+  const inputs = document.getElementsByName("box");
+  //console.log(inputs[0].value)
+  for (const p of person) {
+    for (const n of number) {
+      for (const t of tense) {
+        for (const v of voice) {
+          output.value += "["; //subentry open
+
+          //conjugation data
+
+          output.value += "[";
+          output.value += `"", "", "${p}", "${n}", "${t}", "${v}", "ind."`;
+          output.value += "], ";
+          
+          //word entry
+          console.log(`"", "", "${p}", "${n}", "${t}", "${v}", "ind." ` + inputs[pos].value);
+        
+          output.value += "[";
+          output.value += `"${inputs[pos].value}"`;
+          pos++;
+          output.value += "]";
+          output.value += "], "; //subentry close
+        }
+      }
+    }
+  }
+  //output.value -= ", ";
+  output.value += "]";
+}
+
+function addIndicatives() {
+  var uses = 0;
+  for (const p of person) {
+    for (const n of number) {
+      for (const t of tense) {
+        for (const v of voice) {
+          const paragraph = document.body.appendChild(document.createElement("p"));
+          const inp = document.body.appendChild(document.createElement("input"));
+          inp.setAttribute("name", "box");
+          inp.setAttribute("onkeyup", "parse()");
+          const br = document.body.appendChild(document.createElement("br"));
+          uses++;
+
+          paragraph.innerText = `${p} ${n} ${t} ${v} ind.`
+
+          
+        }
+      }
+    }
+  }
+  console.log(uses)
+}
+
+addIndicatives();
+    </script>
+  </body>
+</html>
