@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-21 21:41")
+console.log("Last updated 2026-02-21 21:57")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -80,7 +80,8 @@ function newQuestionSettingOne() {
   attempts++;
     
   //const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
-  const varToChange = Math.floor((Math.random() * 5) + 2) //...while we're only using the indicatives. Make sure to change [varToChange - 2] back to [varToChange] when we add the participles
+  const varToChange = Math.floor((Math.random() * 4) + 2) //...while we're only using the indicatives. Make sure to change [varToChange - 2] back to [varToChange] when we add the participles
+    console.log(varToChange)
     console.log(acceptableValues[varToChange-2])
   var newValue = currentQuestion[0][varToChange];
   if (acceptableValues[varToChange-2].length < 2) continue;
