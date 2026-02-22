@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-21 21:18")
+console.log("Last updated 2026-02-21 21:25")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -79,7 +79,8 @@ function newQuestionSettingOne() {
   while (!validAnswersCollected) {
   attempts++;
     
-  const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
+  //const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
+  const varToChange = Math.floor((Math.random() * 5) + 2) //...while we're only using the indicatives
   var newValue = currentQuestion[0][varToChange];
   if (acceptableValues[varToChange].length < 2) continue;
   while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
