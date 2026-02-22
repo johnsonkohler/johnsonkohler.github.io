@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-20 18:22")
+console.log("Last updated 2026-02-21 21:11")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -54,22 +54,21 @@ function newQuestionSettingOne() {
   const answerBoxes = document.getElementsByName("answerBox");
   for (let i=1; i<answerBoxes.length; i++) answerBoxes[i].type = "hidden";
 
-  /* while there's only one word in the dictionary...
-  if (wordUses%3 == 0) {
-    var temp = currentWord;
-    while (temp == currentWord) temp = dictionary[Math.floor(Math.random() * dictionary.length)]
-    currentWord = temp;
+  // while there's only one word in the dictionary...
+  if (wordUses == 0) { //normally if (wordUses%3 == 0)
+    //var temp = currentWord;
+    //while (temp == currentWord) temp = dictionary[Math.floor(Math.random() * dictionary.length)]
+    //currentWord = temp;
 
     recentAnswers = [];
 
     currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]
   }
   else {
-  */
     recentAnswers.push(currentQuestion);
     recentAnswers.push(correctAnswer);
     currentQuestion = correctAnswer;
-  // } see block comment above.
+  }
   wordUses++;
 
   //-------------------------------------------------------------------- Selecting an answer
