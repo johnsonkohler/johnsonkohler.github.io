@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-21 21:38")
+console.log("Last updated 2026-02-21 21:41")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -129,6 +129,7 @@ function newQuestionSettingOne() {
   // ^ replacing while (tentative[1] == currentQuestion[1]) tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
   
   correctAnswer = tentative;
+  console.log(correctAnswer);
 
   //-------------------------------------------------------------------- Display
   
