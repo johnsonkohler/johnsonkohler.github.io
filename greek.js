@@ -1,4 +1,4 @@
-console.log("Last updated 2026-02-21 23:56")
+console.log("Last updated 2026-02-22 0:53")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -49,7 +49,7 @@ function newQuestionSettingOne() {
   submitButton.setAttribute("onclick", "event.preventDefault(); checkAnswer();")
   submitButton.setAttribute("value", "Check");
   
-  feedback.innerText = "Conjugate the verb above in the form provided.";
+  feedback.innerText = "Identify the form of the verb above.";
   for (var i=0; i<document.getElementsByName("answerBox").length; i++) document.getElementsByName("answerBox")[i].value = "";
 
   // Math.floor(Math.random() * 10) returns a random int 0 through 9 inclusive
@@ -57,85 +57,28 @@ function newQuestionSettingOne() {
   const answerBoxes = document.getElementsByName("answerBox");
   for (let i=1; i<answerBoxes.length; i++) answerBoxes[i].type = "hidden";
 
-  // while there's only one word in the dictionary...
-  if (wordUses%3 == 0) {
-    var temp = currentWord;
-    while (temp == currentWord) temp = dictionary[Math.floor(Math.random() * dictionary.length)]
-    currentWord = temp;
-    console.log("Word number: " + dictionary.indexOf(currentWord));
+  //-------------------------------------------------------------------- Choosing an answer
 
-    recentAnswers = [];
+  const wordIndex = Math.floor(Math.random() * dictionary.length);
+  currentWord = dictionary[wordIndex];
+  currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)];
+  console.log(currentQuestion);
 
-    currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]
-  }
-  else {
-    recentAnswers.push(currentQuestion);
-    recentAnswers.push(correctAnswer);
-    currentQuestion = correctAnswer;
-  }
-  wordUses++;
+  correctAnswer = [[], []];
+  for (const entry of currentWord) if (entry[0] == currentQuestion[0]) correctAnswer[1].push(entry[0]);
+  console.log(correctAnswer[1]);
 
-  //-------------------------------------------------------------------- Selecting an answer
-  var validAnswersCollected = false;
-  var attempts = 0;
-  const maxAttempts = currentWord.length*10;
-
-  while (!validAnswersCollected) {
-  attempts++;
-    
-  //const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
-  const varToChange = Math.floor((Math.random() * 4) + 2) //...while we're only using the indicatives. Make sure to change [varToChange - 2] back to [varToChange] when we add the participles
-    console.log("variable to change: " + varToChange)
-    console.log(acceptableValues[varToChange-2])
-  var newValue = currentQuestion[0][varToChange];
-  if (acceptableValues[varToChange-2].length < 2) continue;
-  while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange-2][Math.floor(Math.random() * acceptableValues[varToChange-2].length)];
-
-  validAnswers = [];
-  for (const entry of currentWord) {
-    if (entry[0][varToChange] != newValue) continue;
-    var valid = true;
-    for (var j=0; j<entry[0].length; j++) {
-      if (j == varToChange) continue;
-      if (entry[0][j] == "" || currentQuestion[0][j] == "" || entry[0][j] == currentQuestion[0][j]) continue;
-      valid = false;
+  var texto = "";
+  for (const entry of correctAnswer[1]) {
+    texto = "";
+    for (var i=0; i<entry.length; i++) {
+      texto += entry[i];
+      if (entry[i] != "" && i != entry.length-1) texto += " ";
     }
-    if (valid) validAnswers.push(entry);
+    console.log(texto);
+    correctAnswer[1][correctAnswer[1].indexOf(entry)] = texto;
   }
-
-  var existsNewAnswerLine = false
-  for (var i=0; i<validAnswers.length; i++) {
-    //replacing if (validAnswer[1] != currentQuestion[1]) existsNewAnswerLine = true;
-    var recentlyUsed = false;
-    for (const recentAnswer of recentAnswers) if (validAnswers[i][1] == recentAnswer[1]) recentlyUsed = true;
-    if (!recentlyUsed) {
-      existsNewAnswerLine = true;
-    } else {
-      var tempArr = [];
-      for (var j=0; j<i; j++) tempArr.push(validAnswers[j]);
-      for (var j=i+1; j<validAnswers.length; j++) tempArr.push(validAnswers[j]);
-      validAnswers = tempArr;
-      i--;
-    }
-  }
-  if (validAnswers.length > 0 && existsNewAnswerLine) validAnswersCollected = true;
-    
-  if (attempts > maxAttempts) {
-    validAnswers = [];
-    var randomNewAnswer = currentWord[Math.floor(Math.random() * currentWord.length)];
-    while (randomNewAnswer[1] == currentQuestion[1]) randomNewAnswer = currentWord[Math.floor(Math.random() * currentWord.length)];
-    validAnswers.push(randomNewAnswer);
-    break;
-  }
-  }
-  
-  var tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
-  
-  // ^ replacing while (tentative[1] == currentQuestion[1]) tentative = validAnswers[Math.floor(Math.random() * validAnswers.length)];
-  
-  correctAnswer = tentative;
-  console.log(correctAnswer);
-
+  console.log(correctAnswer[1])
   //-------------------------------------------------------------------- Display
   
   var promptText = "";
@@ -146,7 +89,8 @@ function newQuestionSettingOne() {
   promptWord.innerText = promptText;
   
   promptText = "";
-  for (var i=0; i<correctAnswer[0].length; i++) promptText += correctAnswer[0][i] + " "
+  //for (var i=0; i<correctAnswer[0].length; i++) promptText += correctAnswer[0][i] + " "
+  //put this in an if statement?? This could feasibly be one function, with the middle part capsuled out.
   promptForm.innerText = promptText;
 
 }
@@ -170,6 +114,7 @@ function checkAnswer() {
   }
 
   //check to make sure no incorrect answers are represented
+  //in hindsight this could have been done with .length
   var noneWrong = true;
   for (var i=0; i<userAnswers.length; i++) {
     for (var j=0; j<correctAnswer[1].length; j++) {
