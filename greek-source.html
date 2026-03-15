@@ -11,7 +11,7 @@
   </head>
   <body>
     <div><h2>Greek Forms - Dictionary Formatter</h2></div>
-    <p>Last updated: 2026-03.15 17:59</p>
+    <p>Last updated: 2026-03.15 18:01</p>
 
     <p>Save your work:</p>
     <input id="output" type="text">
@@ -68,13 +68,11 @@ function parse() {
       for (const v of voice) {
         if (m == "inf.") {
           parseInput(`"", "", "", "", "${t}", "${v}", "inf."`);
-          uses++;
         } else {
           for (const n of number) {
             if (m == "part.") {
               for (const g of gender) {
                 parseInput(`${g}, "nom.", "", "${n}", "${t}", "${v}", "part."`);
-                uses++;
               }
             } else {
               for (const p of person) {
@@ -86,9 +84,7 @@ function parse() {
                 const br = document.body.appendChild(document.createElement("br"));
                 */
       
-                parseInput(`"", "", "${p}", "${n}", "${t}", "${v}", "${m}"`);
-                uses++;
-      
+                parseInput(`"", "", "${p}", "${n}", "${t}", "${v}", "${m}"`);      
               }
             }
           }
