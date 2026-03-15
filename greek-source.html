@@ -11,7 +11,7 @@
   </head>
   <body>
     <div><h2>Greek Forms - Dictionary Formatter</h2></div>
-    <p>Last updated: 2026-03-15 18:50</p>
+    <p>Last updated: 2026-03-15 18:54</p>
 
     <p>Save your work:</p>
     <input id="output" type="text">
@@ -71,18 +71,12 @@ function parse() {
         } else {
           for (const n of number) {
             if (m == "part.") {
+              if (n == "pl.") continue;
               for (const g of gender) {
                 parseInput(`${g}, "nom.", "", "${n}", "${t}", "${v}", "part."`);
               }
             } else {
               for (const p of person) {
-                /* add fields:
-                const paragraph = document.body.appendChild(document.createElement("p"));
-                const inp = document.body.appendChild(document.createElement("input"));
-                inp.setAttribute("name", "box");
-                inp.setAttribute("onkeyup", "parse()");
-                const br = document.body.appendChild(document.createElement("br"));
-                */
                 if (m == "imp." && p != "2nd") continue;
                 parseInput(`"", "", "${p}", "${n}", "${t}", "${v}", "${m}"`);      
               }
@@ -116,19 +110,13 @@ function setup() {
         } else {
           for (const n of number) {
             if (m == "part.") {
+              if (n == "pl.") continue;
               for (const g of gender) {
                 addFields().innerText = `${g} ${n} ${t} ${v} part.`;
                 uses++;
               }
             } else {
               for (const p of person) {
-                /* add fields:
-                const paragraph = document.body.appendChild(document.createElement("p"));
-                const inp = document.body.appendChild(document.createElement("input"));
-                inp.setAttribute("name", "box");
-                inp.setAttribute("onkeyup", "parse()");
-                const br = document.body.appendChild(document.createElement("br"));
-                */
                 if (m == "imp." && p != "2nd") continue;
                 addFields().innerText = `${p} ${n} ${t} ${v} ${m}`;
                 uses++;
