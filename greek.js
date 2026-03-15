@@ -62,7 +62,7 @@ function findAnswerSettingOne() {
 
   validAnswers = [];
   for (const entry of currentWord) {
-    if (entry[0][varToChange] != newValue) continue;
+    if (entry[0][varToChange] != newValue || entry[1] == "") continue; // the second condition, this is new
     var valid = true;
     for (var j=0; j<entry[0].length; j++) {
       if (j == varToChange) continue;
@@ -134,7 +134,8 @@ function newQuestionSettingOne() {
   
       recentAnswers = [];
   
-      currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]
+      currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)];
+      while (currentQuestion[1] == "") currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]; //this is new
     }
     else {
       recentAnswers.push(currentQuestion);
