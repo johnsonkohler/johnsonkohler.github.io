@@ -11,7 +11,7 @@
   </head>
   <body>
     <div><h2>Greek Forms - Dictionary Formatter</h2></div>
-    <p>Last updated: 2026-02-29 21:02</p>
+    <p>Last updated: 2026-03.15 17:55</p>
 
     <p>Save your work:</p>
     <input id="output" type="text">
@@ -25,7 +25,7 @@
     <br>
 
     <script>
-      const gender = ["m.", "f.", "n."]
+const gender = ["m.", "f.", "n."]
 const cases = ["nom."]
 const person = ["1st", "2nd", "3rd"]
 const number = ["sing.", "pl."]
@@ -34,34 +34,63 @@ const voice = ["act.", "mid.", "pass."]
 const mood = ["ind.", "imp.", "inf.", "part."]
 
 const output = document.getElementById("output");
+var pos = 0;
+
+function parseInput(conjData) {
+  output.value += "["; //subentry open
+
+  //conjugation data
+
+  output.value += "[";
+  output.value += conjData;
+  output.value += "], ";
+  
+  //word entry
+  console.log(conjData + inputs[pos].value);
+
+  output.value += "[";
+  output.value += `"${inputs[pos].value}"`;
+  pos++;
+  output.value += "]";
+  output.value += "], "; //subentry close
+}
 
 function parse() {
   output.value = "";
   output.value += "[";
 
-  var pos = 0;
+  pos = 0;
   const inputs = document.getElementsByName("box");
-  //console.log(inputs[0].value)
-  for (const p of person) {
-    for (const n of number) {
-      for (const t of tense) {
-        for (const v of voice) {
-          output.value += "["; //subentry open
-
-          //conjugation data
-
-          output.value += "[";
-          output.value += `"", "", "${p}", "${n}", "${t}", "${v}", "ind."`;
-          output.value += "], ";
-          
-          //word entry
-          console.log(`"", "", "${p}", "${n}", "${t}", "${v}", "ind." ` + inputs[pos].value);
-        
-          output.value += "[";
-          output.value += `"${inputs[pos].value}"`;
-          pos++;
-          output.value += "]";
-          output.value += "], "; //subentry close
+  for (const m of mood) {
+    for (const t of tense) {
+      if (m != "ind." && t == "imp.") continue;
+      for (const v of voice) {
+        if (m == "inf.") {
+          parseInput(`"", "", "", "", ${t}, ${v}, "inf."`);
+          uses++;
+        } else {
+          for (const n of number) {
+            if (m == "part.") {
+              for (const g of gender) {
+                parseInput(`${g}, "nom.", "", ${n}, ${t}, ${v}, "part."`);
+                uses++;
+              }
+            } else {
+              for (const p of person) {
+                /* add fields:
+                const paragraph = document.body.appendChild(document.createElement("p"));
+                const inp = document.body.appendChild(document.createElement("input"));
+                inp.setAttribute("name", "box");
+                inp.setAttribute("onkeyup", "parse()");
+                const br = document.body.appendChild(document.createElement("br"));
+                */
+      
+                parseInput(`"", "", ${p}, ${n}, ${t}, ${v}, ${m}`);
+                uses++;
+      
+              }
+            }
+          }
         }
       }
     }
@@ -70,22 +99,46 @@ function parse() {
   output.value += "]";
 }
 
-function addIndicatives() {
+function addFields() {
+  const paragraph = document.body.appendChild(document.createElement("p"));
+  const inp = document.body.appendChild(document.createElement("input"));
+  inp.setAttribute("name", "box");
+  inp.setAttribute("onkeyup", "parse()");
+  const br = document.body.appendChild(document.createElement("br"));
+  return paragraph;
+}
+      
+function setup() {
   var uses = 0;
-  for (const p of person) {
-    for (const n of number) {
-      for (const t of tense) {
-        for (const v of voice) {
-          const paragraph = document.body.appendChild(document.createElement("p"));
-          const inp = document.body.appendChild(document.createElement("input"));
-          inp.setAttribute("name", "box");
-          inp.setAttribute("onkeyup", "parse()");
-          const br = document.body.appendChild(document.createElement("br"));
-          uses++;
-
-          paragraph.innerText = `${p} ${n} ${t} ${v} ind.`
-
-          
+  for (const m of mood) {
+    for (const t of tense) {
+      if (m != "ind." && t == "imp.") continue;
+      for (const v of voice) {
+        if (m == "inf.") {
+          addFields().innerText = `${t} ${v} inf.`;
+        } else {
+          for (const n of number) {
+            if (m == "part.") {
+              for (const g of gender) {
+                addFields().innerText = `${g} ${n} ${t} ${v} part.`;
+                uses++;
+              }
+            } else {
+              for (const p of person) {
+                /* add fields:
+                const paragraph = document.body.appendChild(document.createElement("p"));
+                const inp = document.body.appendChild(document.createElement("input"));
+                inp.setAttribute("name", "box");
+                inp.setAttribute("onkeyup", "parse()");
+                const br = document.body.appendChild(document.createElement("br"));
+                */
+      
+                addFields().innerText = `${p} ${n} ${t} ${v} ${m}`;
+                uses++;
+      
+              }
+            }
+          }
         }
       }
     }
@@ -93,7 +146,7 @@ function addIndicatives() {
   console.log(uses)
 }
 
-addIndicatives();
+setup();
     </script>
   </body>
 </html>
