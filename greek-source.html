@@ -11,7 +11,7 @@
   </head>
   <body>
     <div><h2>Greek Forms - Dictionary Formatter</h2></div>
-    <p>Last updated: 2026-03-15 18:43</p>
+    <p>Last updated: 2026-03-15 18:47</p>
 
     <p>Save your work:</p>
     <input id="output" type="text">
@@ -64,13 +64,13 @@ function parse() {
   const inputs = document.getElementsByName("box");
   for (const m of mood) {
     for (const t of tense) {
-      if (m != "ind." && t == "imperf.") continue;      
-      if (m == "imp." && p != "2nd") continue;
+      if (m != "ind." && t == "imperf.") continue; 
       for (const v of voice) {
         if (m == "inf.") {
           parseInput(`"", "", "", "", "${t}", "${v}", "inf."`);
         } else {
           for (const n of number) {
+            if (m == "imp." && p != "2nd") continue;
             if (m == "part.") {
               for (const g of gender) {
                 parseInput(`${g}, "nom.", "", "${n}", "${t}", "${v}", "part."`);
@@ -111,12 +111,12 @@ function setup() {
   for (const m of mood) {
     for (const t of tense) {
       if (m != "ind." && t == "imperf.") continue;
-      if (m == "imp." && p != "2nd") continue;
       for (const v of voice) {
         if (m == "inf.") {
           addFields().innerText = `${t} ${v} inf.`;
         } else {
           for (const n of number) {
+            if (m == "imp." && p != "2nd") continue;
             if (m == "part.") {
               for (const g of gender) {
                 addFields().innerText = `${g} ${n} ${t} ${v} part.`;
