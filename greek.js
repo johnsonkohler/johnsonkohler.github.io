@@ -1,4 +1,4 @@
-console.log("Last updated 2026-03-17 12:08")
+console.log("Last updated 2026-03-17 12:16")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -18,7 +18,7 @@ const dictionary = [dict4, dict5];
 
 // --------------------------------------------------------------------- global: acceptable values
 
-const acceptableValues = [["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."]];
+const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], ["ind.", "imp.", "inf.", "part."]];
   
 //testing purposes: [["1st", "3rd"], ["sing"], ["present", "past", "inf"]];
 
@@ -58,9 +58,9 @@ function findAnswerSettingOne() {
   attempts++;
     
   //const varToChange = Math.floor(Math.random() * currentQuestion[0].length)
-  const varToChange = Math.floor((Math.random() * 4)) //...while we're only using the indicatives. Make sure to change [varToChange - 2] back to [varToChange] when we add the participles
-    console.log("variable to change: " + varToChange)
-    console.log(acceptableValues[varToChange])
+  const varToChange = Math.floor((Math.random() * acceptableValues.length));
+    console.log("variable to change: " + varToChange);
+    console.log(acceptableValues[varToChange]);
   var newValue = currentQuestion[0][varToChange];
   if (acceptableValues[varToChange].length < 2) continue;
   while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
