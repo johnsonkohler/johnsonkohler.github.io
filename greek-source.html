@@ -73,7 +73,7 @@ function parse() {
             if (m == "part.") {
               if (n == "pl.") continue;
               for (const g of gender) {
-                parseInput(`${g}, "nom.", "", "${n}", "${t}", "${v}", "part."`);
+                parseInput(`"${g}", "nom.", "", "${n}", "${t}", "${v}", "part."`);
               }
             } else {
               for (const p of person) {
