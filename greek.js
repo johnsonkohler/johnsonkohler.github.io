@@ -1,4 +1,4 @@
-console.log("Last updated 2026-03-17 12:01")
+console.log("Last updated 2026-03-17 12:08")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -63,7 +63,7 @@ function findAnswerSettingOne() {
     console.log(acceptableValues[varToChange])
   var newValue = currentQuestion[0][varToChange];
   if (acceptableValues[varToChange].length < 2) continue;
-  while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange-2][Math.floor(Math.random() * acceptableValues[varToChange-2].length)];
+  while (newValue == currentQuestion[0][varToChange]) newValue = acceptableValues[varToChange][Math.floor(Math.random() * acceptableValues[varToChange].length)];
 
   validAnswers = [];
   for (const entry of currentWord) {
