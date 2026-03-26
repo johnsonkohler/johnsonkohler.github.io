@@ -1,4 +1,4 @@
-console.log("Last updated 2026-03-26 17:35")
+console.log("Last updated 2026-03-26 17:39")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -261,6 +261,7 @@ for (const word of bigDictionary) {
   const newToggle = toggleMenu.appendChild(document.createElement("input"));
   newToggle.setAttribute("type", "checkbox");
   newToggle.setAttribute("name", "toggle");
+  newToggle.checked = true;
   const newLabel = toggleMenu.appendChild(document.createElement("p"));
   newLabel.innerText = word[0][1];
   toggleMenu.appendChild(document.createElement("br"));
