@@ -31,7 +31,7 @@ const person = ["1st", "2nd", "3rd"]
 const number = ["sing.", "pl."]
 const tense = ["pres.", "fut.", "imperf.", "aor."]
 const voice = ["act.", "mid.", "pass."]
-const mood = ["ind.", "imp.", "inf.", "part."]
+const mood = ["ind.", "imp.", "inf.", "part.", "subj.", "opt."]
 
 const output = document.getElementById("output");
 var pos = 0;
@@ -64,7 +64,10 @@ function parse() {
   const inputs = document.getElementsByName("box");
   for (const m of mood) {
     for (const t of tense) {
-      if (m != "ind." && t == "imperf.") continue; 
+      if (m != "ind." && t == "imperf.") continue;
+      if (m == "imp." && t == "fut.") continue;
+      if (m == "subj." && t != "pres." && t != "aor.") continue;
+      if (m == "opt." && t != "pres." && t != "fut." && t != "aor.") continue;
       for (const v of voice) {
         if (m == "inf.") {
           parseInput(`"", "", "", "", "${t}", "${v}", "inf."`);
