@@ -11,7 +11,7 @@
   </head>
   <body>
     <div><h2>Greek Forms - Dictionary Formatter</h2></div>
-    <p>Last updated: 2026-03-15 18:54</p>
+    <p>Last updated: 2026-03-26 17:06</p>
 
     <p>Save your work:</p>
     <input id="output" type="text">
@@ -107,6 +107,9 @@ function setup() {
   for (const m of mood) {
     for (const t of tense) {
       if (m != "ind." && t == "imperf.") continue;
+      if (m == "imp." && t == "fut.") continue;
+      if (m == "subj." && t != "pres." && t != "aor.") continue;
+      if (m == "opt." && t != "pres." && t != "fut." && t != "aor.") continue;
       for (const v of voice) {
         if (m == "inf.") {
           addFields().innerText = `${t} ${v} inf.`;
