@@ -262,7 +262,7 @@ for (const word of bigDictionary) {
   newToggle.setAttribute("type", "checkbox");
   newToggle.setAttribute("name", "toggle");
   newToggle.checked = true;
-  const newLabel = toggleMenu.appendChild(document.createElement("p"));
+  const newLabel = toggleMenu.appendChild(document.createElement("label"));
   newLabel.innerText = word[0][1];
   toggleMenu.appendChild(document.createElement("br"));
 }
