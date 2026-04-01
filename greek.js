@@ -18,7 +18,7 @@ const bigDictionary = [dict2, dict4, dict5, dict6, dict7];
 
 // --------------------------------------------------------------------- global: acceptable values
 
-const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], ["ind.", "imp.", "inf.", "part."]];
+const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], ["ind.", "imp.", "inf.", "part.", "subj."]];
   
 //testing purposes: [["1st", "3rd"], ["sing"], ["present", "past", "inf"]];
 
