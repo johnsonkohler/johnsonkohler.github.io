@@ -1,4 +1,4 @@
-console.log("Last updated 2026-04-20 14:11")
+const update = "Last updated: 2026-04-20 14:43"
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -271,6 +271,10 @@ function addField() {
 
 
 //page setup
+
+const htmlUpdate = document.getElementById("update-log").innerText;
+console.log("JS " + update + "\n HTML " + htmlUpdate)
+if (update > htmlUpdate) document.getElementById("update-log").innerText = update;
 
 const toggleMenu = document.getElementById("toggles");
 const b1 = toggleMenu.appendChild(document.createElement("b"))
