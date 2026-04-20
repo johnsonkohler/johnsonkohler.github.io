@@ -1,4 +1,4 @@
-console.log("Last updated 2026-04-20 4:54")
+console.log("Last updated 2026-04-20 14:11")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -19,7 +19,7 @@ const bigDictionary = [dict2, dict4, dict5, dict6, dict7, dict8];
 
 // --------------------------------------------------------------------- global: acceptable values
 
-var moods = [];
+var acceptableMoods = ["ind.", "imp.", "inf.", "part.", "subj."];
 const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], ["ind.", "imp.", "inf.", "part.", "subj."]];
   
 //testing purposes: [["1st", "3rd"], ["sing"], ["present", "past", "inf"]];
@@ -137,6 +137,20 @@ function newQuestionSettingOne() {
   for (var i=0; i<bigDictionary.length; i++) {
     if (toggleSettings[i].checked == true) dictionary.push(bigDictionary[i]);
   }
+
+  //mood toggler (next two blocks)
+  acceptableMoods = ["ind.", "imp.", "inf.", "part.", "subj."];
+  var temp = [];
+  for (var i=0; i<acceptableMoods.length; i++) if (document.getElementById(acceptableMoods[i]).checked) temp.push(acceptableMoods[i]);
+  acceptableMoods = temp;
+
+  temp = []
+  for (var i=0; i<dictionary.length; i++) {
+    for (const word1 of dictionary[i]) if (acceptableMoods.includes(word1[0][6])) temp.push(word1)
+    dictionary[i] = temp;
+    temp = []
+  }
+  
 
   if (setting == 0) {
     if (wordUses%3 == 0) {
@@ -259,6 +273,9 @@ function addField() {
 //page setup
 
 const toggleMenu = document.getElementById("toggles");
+const b1 = toggleMenu.appendChild(document.createElement("b"))
+b1.innerText = "Choose verbs"
+toggleMenu.appendChild(document.createElement("br"))
 for (const word of bigDictionary) {
   const newToggle = toggleMenu.appendChild(document.createElement("input"));
   newToggle.setAttribute("type", "checkbox");
@@ -266,6 +283,21 @@ for (const word of bigDictionary) {
   newToggle.checked = true;
   const newLabel = toggleMenu.appendChild(document.createElement("label"));
   newLabel.innerText = word[0][1];
+  toggleMenu.appendChild(document.createElement("br"));
+}
+toggleMenu.appendChild(document.createElement("br"))
+
+const b2 = toggleMenu.appendChild(document.createElement("b"))
+b2.innerText = "Choose moods"
+toggleMenu.appendChild(document.createElement("br"))
+for (const m of acceptableMoods) {
+  const newToggle = toggleMenu.appendChild(document.createElement("input"));
+  newToggle.setAttribute("type", "checkbox");
+  newToggle.setAttribute("name", "m-toggle");
+  newToggle.setAttribute("id", m);
+  newToggle.checked = true;
+  const newLabel = toggleMenu.appendChild(document.createElement("label"));
+  newLabel.innerText = m;
   toggleMenu.appendChild(document.createElement("br"));
 }
 
