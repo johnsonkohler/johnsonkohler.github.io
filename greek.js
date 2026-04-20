@@ -1,4 +1,4 @@
-console.log("Last updated 2026-04-20 4:38")
+console.log("Last updated 2026-04-20 4:54")
 
 // --------------------------------------------------------------------- global: dictionary
 
@@ -19,8 +19,8 @@ const bigDictionary = [dict2, dict4, dict5, dict6, dict7, dict8];
 
 // --------------------------------------------------------------------- global: acceptable values
 
-var moods = ["ind.", "imp.", "inf.", "part.", "subj."];
-const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], moods];
+var moods = [];
+const acceptableValues = [["m.", "f.", "n."], ["nom."], ["1st", "2nd", "3rd"], ["sing.", "pl."], ["pres.", "fut.", "imperf.", "aor."], ["act.", "mid.", "pass."], ["ind.", "imp.", "inf.", "part.", "subj."]];
   
 //testing purposes: [["1st", "3rd"], ["sing"], ["present", "past", "inf"]];
 
@@ -69,7 +69,7 @@ function findAnswerSettingOne() {
 
   validAnswers = [];
   for (const entry of currentWord) {
-    if (entry[0][varToChange] != newValue || entry[1] == "") continue;
+    if (entry[0][varToChange] != newValue || entry[1] == "") continue; // the second condition, this is new
     var valid = true;
     for (var j=0; j<entry[0].length; j++) {
       if (j == varToChange) continue;
@@ -132,21 +132,10 @@ function newQuestionSettingOne() {
   const answerBoxes = document.getElementsByName("answerBox");
   for (let i=1; i<answerBoxes.length; i++) answerBoxes[i].type = "hidden";
 
-  //trying to implement mood toggler, this is new
-  // TODO this doesn't work and causes infinite loops, except for indicatives. Fix somehow
-  acceptableMoods = [];
-  const moodToggleSettings = document.getElementsByName("m-toggle");
-  for (var i=0; i<moodToggleSettings.length; i++) {
-    if (moodToggleSettings[i].checked == true) acceptableMoods.push(moodToggleSettings[i].id);
-  }
-  console.log("Legal moods: " + acceptableMoods)
-
-  //functioning dictionary picker with experimental mood toggler additions, this is new
   const dictionary = [];
   const toggleSettings = document.getElementsByName("toggle");
   for (var i=0; i<bigDictionary.length; i++) {
     if (toggleSettings[i].checked == true) dictionary.push(bigDictionary[i]);
-    }
   }
 
   if (setting == 0) {
@@ -159,8 +148,7 @@ function newQuestionSettingOne() {
       recentAnswers = [];
   
       currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)];
-      while (currentQuestion[1] == "" || !acceptableValues[6].includes(currentQuestion[0][6])) currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)];
-      //^ TODO this doesn't work and causes infinite loops, except for indicatives. Fix somehow
+      while (currentQuestion[1] == "") currentQuestion = currentWord[Math.floor(Math.random() * currentWord.length)]; //this is new
     }
     else {
       recentAnswers.push(currentQuestion);
@@ -271,9 +259,6 @@ function addField() {
 //page setup
 
 const toggleMenu = document.getElementById("toggles");
-const b1 = toggleMenu.appendChild(document.createElement("b"))
-b1.innerText = "Choose verbs"
-toggleMenu.appendChild(document.createElement("br"))
 for (const word of bigDictionary) {
   const newToggle = toggleMenu.appendChild(document.createElement("input"));
   newToggle.setAttribute("type", "checkbox");
@@ -281,21 +266,6 @@ for (const word of bigDictionary) {
   newToggle.checked = true;
   const newLabel = toggleMenu.appendChild(document.createElement("label"));
   newLabel.innerText = word[0][1];
-  toggleMenu.appendChild(document.createElement("br"));
-}
-toggleMenu.appendChild(document.createElement("br"))
-
-const b2 = toggleMenu.appendChild(document.createElement("b"))
-b2.innerText = "Choose moods"
-toggleMenu.appendChild(document.createElement("br"))
-for (const m of moods) {
-  const newToggle = toggleMenu.appendChild(document.createElement("input"));
-  newToggle.setAttribute("type", "checkbox");
-  newToggle.setAttribute("name", "m-toggle");
-  newToggle.setAttribute("id", m);
-  newToggle.checked = true;
-  const newLabel = toggleMenu.appendChild(document.createElement("label"));
-  newLabel.innerText = m;
   toggleMenu.appendChild(document.createElement("br"));
 }
 
