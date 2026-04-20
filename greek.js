@@ -69,7 +69,7 @@ function findAnswerSettingOne() {
 
   validAnswers = [];
   for (const entry of currentWord) {
-    if (entry[0][varToChange] != newValue || entry[1] == "") continue; // the second condition, this is new
+    if (entry[0][varToChange] != newValue || entry[1] == "") continue;
     var valid = true;
     for (var j=0; j<entry[0].length; j++) {
       if (j == varToChange) continue;
@@ -134,26 +134,18 @@ function newQuestionSettingOne() {
 
   //trying to implement mood toggler, this is new
   // TODO this doesn't work and causes infinite loops, except for indicatives. Fix somehow
-  moods = [];
+  acceptableMoods = [];
   const moodToggleSettings = document.getElementsByName("m-toggle");
   for (var i=0; i<moodToggleSettings.length; i++) {
-    if (moodToggleSettings[i].checked == true) moods.push(moodToggleSettings[i].id);
+    if (moodToggleSettings[i].checked == true) acceptableMoods.push(moodToggleSettings[i].id);
   }
-  acceptableValues[6] = moods
-  console.log("Legal moods: " + moods)
+  console.log("Legal moods: " + acceptableMoods)
 
   //functioning dictionary picker with experimental mood toggler additions, this is new
   const dictionary = [];
   const toggleSettings = document.getElementsByName("toggle");
   for (var i=0; i<bigDictionary.length; i++) {
-    if (toggleSettings[i].checked == true) {
-      usable = false;
-      for (const m in moods) {
-        for (const entry in bigDictionary[i]) {
-          if (entry[0][6] == m && entry[1] != "") usable = true; //this is very inefficient
-        }
-      }
-      if (usable) dictionary.push(bigDictionary[i]); //previously this was just for (bigDictionary) if (checked) push()
+    if (toggleSettings[i].checked == true) dictionary.push(bigDictionary[i]);
     }
   }
 
