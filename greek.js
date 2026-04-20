@@ -146,7 +146,7 @@ function newQuestionSettingOne() {
 
   temp = []
   for (var i=0; i<dictionary.length; i++) {
-    for (const word1 of dictionary[i]) if (acceptableMoods.includes(word1[0][6])) temp.push(word1)
+    for (const word1 of dictionary[i]) if (acceptableMoods.includes(word1[0][6]) && word1[1] != "") temp.push(word1)
     dictionary[i] = temp;
     temp = []
   }
